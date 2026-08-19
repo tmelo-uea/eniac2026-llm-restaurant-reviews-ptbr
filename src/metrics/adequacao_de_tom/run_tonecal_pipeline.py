@@ -18,7 +18,7 @@ from tonecal_ptbr import (
     clamp01,
 )
 
-PROJECT_ROOT = ALGO_DIR.parent.parent.parent  # tcc_coding_files/
+PROJECT_ROOT = ALGO_DIR.parent.parent.parent  # raiz do repositório
 
 GENERATED_DIR = PROJECT_ROOT / "data" / "generated_responses"
 RESULTS_DIR = PROJECT_ROOT / "results" / "tonecal"

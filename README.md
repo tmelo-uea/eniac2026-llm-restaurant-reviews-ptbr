@@ -68,27 +68,26 @@ Nesta publicação:
 ## Estrutura
 
 ```
-tcc_coding_files/
-├── data/
-│   └── human_scores_consolidated.csv   # avaliação humana: 15 avaliadores × 72 itens
-├── docs/
-│   ├── perfis_avaliadores.md           # perfil agregado dos avaliadores (idade/profissão)
-│   └── relatorio_concordancia.md       # Fleiss' κ, Krippendorff's α, ICC por dimensão
-├── prompts/
-│   ├── gpt/ gemini/ llama/             # prompts de sistema por modelo × persona × estratégia
-├── results/
-│   ├── fluency/                        # perplexidade (GPT-2 PT-BR) por cenário + consolidado
-│   ├── perceived_empathy/              # escores WASSA de empatia
-│   ├── stylometric_similarity/         # similaridade estilométrica (Writeprints)
-│   └── tonecal/                        # adequação de tom (ToneCal)
-├── tcc2/
-│   ├── algorithms/                     # implementação das 4 métricas automáticas
-│   │   ├── adequacao_de_tom/
-│   │   ├── consistência_de_marca/
-│   │   ├── empatia/
-│   │   └── fluencia/
-│   └── api/                            # geração de respostas via GPT-5.5, Gemini 3.1, Llama 4
-└── requirements.txt
+data/
+└── human_scores_consolidated.csv   # avaliação humana: 15 avaliadores × 72 itens
+docs/
+├── perfis_avaliadores.md           # perfil agregado dos avaliadores (idade/profissão)
+└── relatorio_concordancia.md       # Fleiss' κ, Krippendorff's α, ICC por dimensão
+prompts/
+├── gpt/ gemini/ llama/              # prompts de sistema por modelo × persona × estratégia
+results/
+├── fluency/                        # perplexidade (GPT-2 PT-BR) por cenário + consolidado
+├── perceived_empathy/              # escores WASSA de empatia
+├── stylometric_similarity/         # similaridade estilométrica (Writeprints)
+└── tonecal/                        # adequação de tom (ToneCal)
+src/
+├── metrics/                        # implementação das 4 métricas automáticas
+│   ├── adequacao_de_tom/
+│   ├── consistencia_de_marca/
+│   ├── empatia/
+│   └── fluencia/
+└── api/                            # geração de respostas via GPT-5.5, Gemini 3.1, Llama 4
+requirements.txt
 ```
 
 ## Reprodutibilidade
@@ -105,12 +104,12 @@ código):
 ```bash
 export OPENAI_API_KEY="..."
 export GEMINI_API_KEY="..."
-python tcc2/api/gpt_api.py --persona persona_1 --shot zero_shot --comment "..."
-python tcc2/api/gemini_api.py --persona persona_1 --shot zero_shot --comment "..."
-python tcc2/api/llama_local.py --persona persona_1 --shot zero_shot --comment "..."  # via Ollama local
+python src/api/gpt_api.py --persona persona_1 --shot zero_shot --comment "..."
+python src/api/gemini_api.py --persona persona_1 --shot zero_shot --comment "..."
+python src/api/llama_local.py --persona persona_1 --shot zero_shot --comment "..."  # via Ollama local
 ```
 
-Cada métrica automática tem seu próprio script de execução em `tcc2/algorithms/<dimensão>/`.
+Cada métrica automática tem seu próprio script de execução em `src/metrics/<dimensão>/`.
 
 ## ⚠️ Nota de verificação pendente
 
