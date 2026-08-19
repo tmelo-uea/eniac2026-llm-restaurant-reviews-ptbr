@@ -1,0 +1,7 @@
+openai==2.4.0
+google-generativeai==0.8.5
+pandas==2.3.3
+cachetools==6.2.1
+ollama==0.6.0
+numpy==2.3.0
+scipy==1.14.0
